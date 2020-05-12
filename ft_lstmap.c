@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:32:42 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:18:23 by utoomey          ###   ########.fr       */
+/*   Created: 2020/05/10 00:08:27 by utoomey           #+#    #+#             */
+/*   Updated: 2020/05/10 10:41:34 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s)
+t_list	*ft_lstmap(t_list *list, void *(*f)(void*), void (*del)(void*))
 {
-	int		i;
-	int		k;
-	char	*new;
+	t_list	*new_list;
+	t_list	*start_list;
 
-	if (!s1 || !s)
+	if (!list || !f)
 		return (NULL);
-	i = -1;
-	k = -1;
-	new = (char*)malloc(sizeof(char) *
-	(ft_strlen((char*)s1) + ft_strlen((char*)s) + 1));
-	if (!new)
+	new_list = ft_lstnew(f(list->content));
+	if (!new_list)
 		return (NULL);
-	while (*(s1 + ++i))
-		*(new + i) = *(s1 + i);
-	while (*(s + ++k))
-		*(new + i + k) = *(s + k);
-	*(new + i + k) = '\0';
-	return (new);
+	start_list = new_list;
+	while (list->next)
+	{
+		list = list->next;
+		new_list->next = ft_lstnew(f(list->content));
+		if (!(new_list->next))
+		{
+			ft_lstclear(&start_list, del);
+			return (NULL);
+		}
+		new_list = new_list->next;
+	}
+	return (start_list);
 }

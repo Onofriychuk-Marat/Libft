@@ -6,7 +6,7 @@
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 12:32:40 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:10:51 by utoomey          ###   ########.fr       */
+/*   Updated: 2020/05/10 00:13:41 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ static	void	ft_edit(char **new, char const *s, char ch, int count_word)
 	size_t		size;
 
 	k = 0;
-	*(new + count_word) = 0;
 	while (count_word--)
 	{
 		size = 0;
 		while (*(s + k) == ch)
 			k++;
-		while (*(s + k + size) != ch)
+		while (*(s + k + size) != ch && *(s + k + size))
 			size++;
 		if (size != 0)
 			*new = ft_substr(s, k, size);
@@ -74,12 +73,13 @@ char			**ft_split(char const *s, char ch)
 	int		count_word;
 	char	**new;
 
-	if (!s || !ch)
+	if (!s)
 		return (NULL);
 	count_word = ft_get_count_word(s, ch);
 	new = (char**)malloc(sizeof(char*) * (count_word + 1));
 	if (!new)
 		return (NULL);
+	*(new + count_word) = 0;
 	ft_edit(new, s, ch, count_word);
 	return (new);
 }

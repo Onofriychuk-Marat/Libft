@@ -6,7 +6,7 @@
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 12:30:26 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:10:21 by utoomey          ###   ########.fr       */
+/*   Updated: 2020/05/11 13:37:16 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,19 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (!dst && !src)
 		return (NULL);
 	if ((unsigned char*)src < (unsigned char*)dst)
-		while (++i <= len)
-			((unsigned char*)dst)[len - i] = ((unsigned char*)src)[len - i];
+	{
+		while (len--)
+		{
+			((unsigned char*)dst)[len] = ((unsigned char*)src)[len];
+		}
+	}
 	else
-		while (len-- > 0)
-			*((unsigned char*)dst++) = *((unsigned char*)src++);
+	{
+		while (i < len)
+		{
+			((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
+			i++;
+		}
+	}
 	return (dst);
 }

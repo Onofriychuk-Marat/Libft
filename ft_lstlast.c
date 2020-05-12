@@ -6,7 +6,7 @@
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 12:33:07 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:09:42 by utoomey          ###   ########.fr       */
+/*   Updated: 2020/05/09 20:04:38 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 t_list	*ft_lstlast(t_list *list)
 {
-	while (list->next && list)
+	if (!list)
+		return (NULL);
+	while (list->next)
 		list = list->next;
 	return (list);
 }

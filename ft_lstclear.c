@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 12:30:32 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:17:34 by utoomey          ###   ########.fr       */
+/*   Created: 2020/05/09 17:02:02 by utoomey           #+#    #+#             */
+/*   Updated: 2020/05/09 17:58:09 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_lstclear(t_list **list, void (*del)(void*))
 {
-	unsigned char	*ptr;
+	t_list	*t;
 
-	ptr = (unsigned char*)b;
-	while (len-- > 0)
-		*(ptr++) = (unsigned char)c;
-	return (b);
+	if (!list || !del)
+		return ;
+	while (*list)
+	{
+		t = (*list)->next;
+		del((*list)->content);
+		free(*list);
+		*list = t;
+	}
 }

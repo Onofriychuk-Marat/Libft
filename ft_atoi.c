@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/08 17:08:31 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:08:33 by utoomey          ###   ########.fr       */
+/*   Created: 2020/05/03 12:28:21 by utoomey           #+#    #+#             */
+/*   Updated: 2020/05/11 19:05:45 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_atoi(const char *str)
 {
-	int	res;
-	int	sign;
+	unsigned long	res;
+	int				sign;
 
 	res = 0;
 	sign = 1;
@@ -28,11 +28,11 @@ int		ft_atoi(const char *str)
 		str++;
 	while (ft_isdigit(*str))
 	{
-		if ((res >= 214748364 && (*str - '0') > 8 && sign == -1))
-			return (0);
-		if (res >= 214748364 && (*str - '0') >= 8 && sign == 1)
-			return (-1);
 		res = res * 10 + (*str++ - '0');
+		if (res > 9223372036854775807 && sign == -1)
+			return (0);
+		if (res > 9223372036854775807 && sign == 1)
+			return (-1);
 	}
-	return (res * sign);
+	return ((int)res * sign);
 }

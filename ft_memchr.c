@@ -6,7 +6,7 @@
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/03 12:30:16 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:10:06 by utoomey          ###   ########.fr       */
+/*   Updated: 2020/05/09 14:15:23 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@ void	*ft_memchr(const void *arr, int c, size_t n)
 {
 	size_t	i;
 
-	i = -1;
-	while (++i < n)
-		if (*((char*)arr + i) == c)
+	i = 0;
+	while (i < n)
+	{
+		if (((char*)arr)[i] == c)
 			return ((char*)arr + i);
+		i++;
+	}
 	return (NULL);
 }

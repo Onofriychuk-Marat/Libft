@@ -6,7 +6,7 @@
 /*   By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 09:06:50 by utoomey           #+#    #+#             */
-/*   Updated: 2020/05/08 17:12:06 by utoomey          ###   ########.fr       */
+/*   Updated: 2020/05/10 01:08:41 by utoomey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int					ft_atoi(const char *str);
 char				*ft_itoa(int n);
 int					ft_strlen(char *str);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
+int					ft_isprint(int ch);
 int					ft_isalpha(int ch);
 int					ft_isdigit(int ch);
 int					ft_isalnum(int ch);
@@ -62,6 +63,7 @@ t_list				*ft_lstlast (t_list *lst);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstiter(t_list *list, void (*f)(void *));
-void				ft_lstclear(t_list **lst, void (*del)(void *));
+void				ft_lstclear(t_list **list, void (*del)(void *));
+t_list				*ft_lstmap(t_list *l, void *(*f)(void*), void(*d)(void*));
 
 #endif

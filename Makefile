@@ -6,7 +6,7 @@
 #    By: utoomey <utoomey@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/08 14:13:23 by utoomey           #+#    #+#              #
-#    Updated: 2020/05/08 14:14:33 by utoomey          ###   ########.fr        #
+#    Updated: 2020/05/10 00:37:24 by utoomey          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRCS =	ft_memset.c ft_bzero.c \
 		ft_putendl_fd.c ft_putnbr_fd.c
 SRCB =	ft_lstnew.c ft_lstadd_front.c \
 		ft_lstsize.c ft_lstlast.c \
-		ft_lstadd_back.c ft_lstiter.c
+		ft_lstadd_back.c ft_lstiter.c \
+		ft_lstdelone.c ft_lstclear.c \
+		ft_lstmap.c
 OBJS = $(SRCS:%.c=%.o)
 OBJB = $(SRCB:%.c=%.o)
 
